@@ -1,0 +1,19 @@
+clear
+if [ "$#" -ne 2 ]
+then
+echo "Invalid number of arguments"
+else
+ls -l $1 | cut -d' ' -f 1 > file1
+ls -l $2 | cut -d' ' -f 1 > file2
+if cmp file1 file2
+then
+echo "\n both files have same permissions \n"
+cat file1
+else
+echo "\n\n files have different permissions \n"
+echo the permissions of file $1
+cat file1
+echo the permissions of file $2
+cat file2
+fi
+fi
